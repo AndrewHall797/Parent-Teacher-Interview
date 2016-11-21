@@ -1,0 +1,2 @@
+module PrinsHelper
+end

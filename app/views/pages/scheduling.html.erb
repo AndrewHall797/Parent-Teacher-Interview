@@ -1,0 +1,21 @@
+<div class>
+    <h1>Welcome to the scheduling page of <%=@whichteacher.name%></h1>
+</div>
+
+<div class>
+    <table>
+        <tr>
+            <th>Time</th>
+            <th>Avalibility</th>
+        </tr>
+        
+        <%times = [1,2,3,4,5,6]%>
+        <% for i in times.each %>
+            <tr>
+                <td><%= times[i - 1] %></td>
+                <td><%= link_to @reservations[i-1], schedule_path(:teacher_account => @whichteacher.id, :place => i-1) %></td>
+            </tr>
+        <% end %>
+        
+    </table>
+</div>

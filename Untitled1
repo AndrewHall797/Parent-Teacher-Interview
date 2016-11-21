@@ -1,0 +1,3 @@
+$ rails new MySite
+$ bundle install
+$ rails server

@@ -1,0 +1,47 @@
+<h1>Create Teacher Account</h1>
+
+<%=form_for @teacher do|f| %>
+    <% if @teacher.errors.any? %>
+    <div class="error_messages">
+        
+        <h2>Form is Invalid</h2>
+        <ul>
+            <% @teacher.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end%>
+        </ul>
+    </div>
+    <%end%>
+    
+    <div class "field">
+        <%= f.label "User"%><br />
+        <%= f.text_field :email %><br />
+    </div>
+    
+    <div class "field">
+        <%= f.label :password %><br />
+        <%= f.text_field :password %><br />
+    </div>
+    
+    <div class "field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.text_field :password_confirmation %><br />
+    </div>
+    
+     <div class "field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name %><br />
+    </div>
+    
+     <div class "field">
+        <%= f.label :last_name %><br />
+        <%= f.text_field :last%><br />
+    </div>   
+    
+    <div class "actions"></div>
+        <%= f.submit %>
+     </div>
+        
+    <%= link_to "Back", prin_user_path %>    
+        
+<% end %>

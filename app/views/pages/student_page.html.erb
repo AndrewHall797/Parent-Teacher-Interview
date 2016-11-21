@@ -1,0 +1,23 @@
+
+<div class>
+    <h1>Welcome to the Earl of March Database <%=@username%> <%= @userlast%> <h1> 
+        <p1>Schedual interviews with your teachers for parent teacher interview day</p1>
+</div>
+
+<div class>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Last Name</th>
+            <th>Times</th>  
+        </tr>
+    
+        <% @teacher.each do |teacher| %>
+            <tr> 
+                <td> <%= link_to teacher.name, scheduling_path(:teacher_account => teacher.id) %></td>
+                <td> <%= teacher.last %></td>
+            </tr>
+        <% end %>
+    </table>
+</div> 
+       <p1 > <%= link_to "Log out", session_destroy_path %> </p1>

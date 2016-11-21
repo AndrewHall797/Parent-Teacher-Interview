@@ -1,0 +1,30 @@
+
+
+
+
+<div class>
+    <h1>Welcome to the Earl of March Database <%=@teachername%> <%= @teacherlast%> <h1> 
+        <p1>Here are the interviews scheduled for you.</p1>
+</div>
+
+<div class>
+    <table>
+        <tr>
+            <th>Times</th>
+            <th>Schedualed</th>
+        </tr>
+       
+        <%times = [1,2,3,4,5,6]%>
+        <% for i in times.each %>
+            <tr>
+                <td><%= times[i-1] %></td>
+                <td><%= @reservations[i-1]%></td>
+            </tr>
+        <% end %>
+        
+        
+    </table>
+</div>
+
+<%= link_to "Reset Scheduale", reset_path %>
+<%= link_to "Log out", session_destroy_path %> 

@@ -1,0 +1,43 @@
+
+<h1>Teacher Access <h1> 
+
+<%=form_for @teacher do|f| %>
+    <% if @teacher.errors.any? %>
+    <div class="error_messages">
+        
+        <h2>Form is Invalid</h2>
+        <ul>
+            <% @teacher.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end%>
+        </ul>
+    </div>
+<%end%>
+
+ Name:<br />
+ <%=@teacher.name%> <br />
+ <br />
+ 
+ LastName:<br />
+ <%=@teacher.last%> <br />
+      
+       <br />
+
+ 
+       <div class "field">
+        <%= f.label "Upadte Password"%><br />
+        <%= f.text_field :password %><br />
+    </div>
+    
+    
+    <div class "field">
+         <%= f.label "Upadte Password Confirmation"%><br />
+        <%= f.text_field :password_confirmation %><br />
+    </div>
+    
+    
+    <div class "actions"></div>
+        <%= f.submit %>
+     </div>
+    
+<% end %>

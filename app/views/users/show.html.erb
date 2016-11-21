@@ -1,0 +1,45 @@
+
+<h1>Student Access <h1> 
+
+<%=form_for @user do|f| %>
+    <% if @user.errors.any? %>
+    <div class="error_messages">
+        
+        <h2>Form is Invalid</h2>
+        <ul>
+            <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end%>
+        </ul>
+    </div>
+<%end%>
+
+ Name:<br />
+ <%=@user.name%> <br />
+ <br />
+ 
+ LastName:<br />
+ <%=@user.last_name%> <br />
+      
+       <br />
+
+
+ 
+ 
+       <div class "field">
+        <%= f.label "Upadte Password"%><br />
+        <%= f.text_field :password %><br />
+    </div>
+    
+    
+    <div class "field">
+         <%= f.label "Upadte Password Confirmation"%><br />
+        <%= f.text_field :password_confirmation %><br />
+    </div>
+    
+    
+    <div class "actions"></div>
+        <%= f.submit %>
+     </div>
+    
+<% end %>

@@ -1,0 +1,49 @@
+<h1>LIST</h1>
+
+
+<ul class="users">
+ <table>
+<table style="float: left;">
+ <table style="float: left;width: 300px;margin-right: 300px;">
+  <tr>
+      <th>Name</th>
+      <th>Last</th>
+      <th>Delete</th>
+  </tr>
+ <% @teachers.each do |teacher| %>
+    <tr>
+            <tr> 
+                <td><li><%= link_to teacher.name, teacher%> </li></td>
+                <td><%= teacher.last%> </td>
+                <td><%= link_to "delete", teacher, method: :delete,
+                                  data: { confirm: "You sure?" } %> </td>
+            </tr>
+  <% end %>
+ </table>
+ 
+ <table>
+  <td style="width: 150px;text-align: Right; padding-left:150px;">
+  <tr>
+      <th>Name</th>
+      <th>Last</th>
+      <th>Delete</th>
+  </tr>
+ <% @users.each do |user| %>
+    <tr>       <tr> 
+                <td><li><%= link_to user.name, user %> </li></td>
+                <td><%= user.last_name%> </td>
+                <td><%= link_to "delete", user, method: :delete,
+                                  data: { confirm: "You sure?" } %> </td>
+            </tr>
+  <% end %>
+ </table>
+ 
+  <div class>
+   <br />
+   <br />
+   <%= link_to "Create Teacher", teacher_new_path %>
+   <%= link_to "Create Student", new_user_path %>
+   <%= link_to "Create Principle/Admin", prin_new_path %>
+   <%= link_to "Home Page", root_url %>
+  </div>
+</ul>
