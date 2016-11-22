@@ -10,7 +10,7 @@ class PagesController < ApplicationController
     end
     
     def teacher_page
-    if (@username = User.find(session[:user_id]).name)
+    unless (@username == Teacher.find(session[:teacher_id]).name)
         redirect_to "https://database-tjthekid.c9users.io/student_page"
     else
         
