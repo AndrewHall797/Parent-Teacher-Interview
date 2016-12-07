@@ -6,5 +6,7 @@ class User < ActiveRecord::Base
     validates_uniqueness_of :email
     
     ROLE_LIST = ["Teacher", "Student"]
+    
+    serialize :your_times, Array
 
 end

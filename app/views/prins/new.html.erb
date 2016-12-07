@@ -1,8 +1,9 @@
+<div class="col-md-4 col-md-offset-4" style= "text-align: center">
 <h1>Create Prin Account</h1>
 
 <%=form_for @prin do|f| %>
     <% if @prin.errors.any? %>
-    <div class="error_messages">
+    <div class="alert alert-danger">
         
         <h2>Form is Invalid</h2>
         <ul>
@@ -15,33 +16,34 @@
     
     <div class "field">
         <%= f.label "User"%><br />
-        <%= f.text_field :email %><br />
+        <%= f.text_field :email,class: "form-control"  %><br />
     </div>
     
     <div class "field">
         <%= f.label :password %><br />
-        <%= f.text_field :password %><br />
+        <%= f.password_field :password,class: "form-control"  %><br />
     </div>
     
     <div class "field">
         <%= f.label :password_confirmation %><br />
-        <%= f.text_field :password_confirmation %><br />
+        <%= f.text_field :password_confirmation,class: "form-control"  %><br />
     </div>
     
      <div class "field">
         <%= f.label :name %><br />
-        <%= f.text_field :name %><br />
+        <%= f.text_field :name,class: "form-control"  %><br />
     </div>
     
      <div class "field">
         <%= f.label :last_name %><br />
-        <%= f.text_field :last_name%><br />
+        <%= f.text_field :last_name,class: "form-control" %><br />
     </div>   
     
-    <div class "actions"></div>
-        <%= f.submit %>
+    <div class "actions">
+        <%= f.submit :Submit, class: 'btn btn-primary' %>
      </div>
         
-    <%= link_to "Back", prin_user_path %>    
+    <%= link_to "Back", prin_user_path, class: 'btn btn-primary btn-lg' %>    
         
 <% end %>
+</div>

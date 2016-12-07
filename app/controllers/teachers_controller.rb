@@ -17,7 +17,7 @@ def create
 end
 
 def show
-        @teacher = Teacher.find(params[:id])
+ @teacher = Teacher.find(params[:id])
 end
 
 def destroy

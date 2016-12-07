@@ -1,19 +1,17 @@
 
 
+<div class="column">
+  <div class="row" style="text-align: center" >
+    <h1 style="font-size: 100px ; text-decoration: underline">Earl of March S.S</h1>
+    <div class="col-md-4 col-md-offset-4">
+        <p style= "font-size: 100px"><%= link_to 'LOG IN', new_session_path, class: "btn-block btn-xlarge btn-primary" %></p>
+      
+        <% if flash[:notice] %>
+        <div id="notice"><%= flash[:notice] %></div>
+        <% end %>
 
-<div class="main">
-  <div class="container">
-    <h1>Earl of March S.S</h1>
-    
-      <p><%= link_to 'LOG IN', new_session_path %></p>
-    
+        <p style= "font-size: 100px" ><%= link_to 'LIST', prin_user_path, class: "btn-block btn-xlarge btn-primary" %></p>    
+    </div>
   </div>
 </div>
 
-<div class
-
-<% if flash[:notice] %>
-    <div id="notice"><%= flash[:notice] %></div>
-<% end %>
-
-<p><%= link_to 'LIST', prin_user_path %></p>

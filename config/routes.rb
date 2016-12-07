@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'reset'=> 'teachers#reset'
   get 'prin_new' => 'prins#new'
   get 'prin_page' => 'users#prin' 
+  get 'reset_student_schedule' => 'users#clear_schedule'
 
   
   
