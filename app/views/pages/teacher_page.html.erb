@@ -13,8 +13,12 @@
         <% for i in times.each %>
             <tr>
                 <td><%= times[i-1] %></td>
+                <% unless @reservations[i-1] == "Avalible" %>
                 <% users_times = @reservations[i-1].split(" ")%>
-                <td><%= user_times[0] user_times[1]%></td>
+                <td><%= "#{users_times[2]} #{users_times[3]}"%></td>
+                <% else %>
+                <td><%= @reservations[i-1] %></td>
+                <% end %>
             </tr>
         <% end %>
         

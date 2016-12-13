@@ -37,12 +37,8 @@ def reset
              @user = User.find(reservations[4].to_i)
                 for x in 0..3
                     unless @user.your_times[x] == "NA"
-                    puts "Hello"
                         user_reservations = @user.your_times[x].split(" ")
-                        puts user_reservations[3]
-                        puts i
                         if user_reservations[3].to_i == i
-                            puts "I got here"
                          @user.your_times[x] = "NA"
                          @user.save
                         end
