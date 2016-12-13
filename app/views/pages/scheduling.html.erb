@@ -11,11 +11,13 @@
         
         <%times = [1,2,3,4,5,6]%>
         <% for i in times.each %>
+        <% reservations =  @reservations[i-1].split(" ")%>
             <tr>
                 <td><%= times[i - 1] %></td>
-                <td><%= link_to @reservations[i-1], schedule_path(:teacher_account => @whichteacher.id, :place => i-1) %></td>
+                <td><%= link_to "#{reservations[0]} for #{reservations[2]} #{reservations[3]}", schedule_path(:teacher_account => @whichteacher.id, :place => i-1) %></td>
             </tr>
         <% end %>
         
     </table>
+    <%= link_to "Back", student_page_path, class: "btn-primary btn-sm" %>
 </div>

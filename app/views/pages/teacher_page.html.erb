@@ -1,7 +1,3 @@
-
-
-
-
 <div class>
     <h1>Welcome to the Earl of March Database <%=@teachername%> <%= @teacherlast%> <h1> 
 </div>
@@ -17,7 +13,8 @@
         <% for i in times.each %>
             <tr>
                 <td><%= times[i-1] %></td>
-                <td><%= @reservations[i-1]%></td>
+                <% users_times = @reservations[i-1].split(" ")%>
+                <td><%= user_times[0] user_times[1]%></td>
             </tr>
         <% end %>
         

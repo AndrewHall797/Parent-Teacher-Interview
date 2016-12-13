@@ -1,5 +1,5 @@
 module DecodeStringHelper
-    def decode(teacher_id,time)
-        
+    def decode(string)
+      
     end
 end
