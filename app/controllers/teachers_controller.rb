@@ -8,7 +8,6 @@ def create
     @teacher = Teacher.new(params.require(:teacher).permit(:email, :password, :password_confirmation, :name, :last, :times, :reserved))
     @teacher.reserved = ["Avalible","Avalible","Avalible","Avalible","Avalible","Avalible"]
     if @teacher.save
-    flash[:notice] = "Thank you for signing up!"
     redirect_to prin_user_path
     else
     render "new"
@@ -50,5 +49,19 @@ def reset
     @teacher.save
      redirect_to  teacher_page_path
 end
+
+    def teacher_remove_selected 
+        
+        string = params[:string1].split(" ")
+        puts string[4]
+        @teacher = Teacher.find(session[:teacher_id])
+        @teacher.reserved[params[:place].to_i] = "Avalible"
+        @teacher.save
+        @user = User.find(string[4].to_i)
+        @user.your_times[string[3].to_i] = "NA"
+        @user.save
+        redirect_to student_page_url     
+        
+    end
 
 end

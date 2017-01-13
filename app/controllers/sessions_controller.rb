@@ -19,7 +19,6 @@ class SessionsController < ApplicationController
     teacher = Teacher.find_by_email(params[:email])
        if teacher && teacher.authenticate(params[:password])
         session[:teacher_id] = teacher.id
-        flash[:notice] = "Logged IN!"
         session[:role] = "Teacher"
         redirect_to "https://database-tjthekid.c9users.io/teacher_page"
        else

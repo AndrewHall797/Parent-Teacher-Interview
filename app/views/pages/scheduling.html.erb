@@ -1,23 +1,81 @@
-<div class>
-    <h1>Welcome to the scheduling page of <%=@whichteacher.name%></h1>
-</div>
+<div class="container-fluid">
 
-<div class="col-md-4">
-    <table class="table table-bordered">
-        <tr>
-            <th>Time</th>
-            <th>Avalibility</th>
-        </tr>
+<nav class="navbar navbar-default  navbar-fixed-top">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Earl Of March S.S</a>
+        </div>
+        <ul class="nav navbar-nav pull-right">
+          <li class="active"><%= link_to "Log out", session_destroy_path%></a></li>
+        </ul>
+</nav>
+    
+    <div class="row">
+        <div class="col-md-4 col-lg-8 col-sm-4 col-xs-4 col-md-offset-1 col-sm-offset1 col-lg-offset-1 col-xs-offset-1">
+            <h1>Welcome to the scheduling page of <%=@whichteacher.name%></h1>
+        </div>
+    </div>
+    
+    <div class="row top-buffer">
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 col-md-offset-1 col-sm-offset1 col-lg-offset-1 col-xs-offset-1">
+            <table class="table ">
+                <tr>
+                    <th>Time</th>
+                    <th>Avalibility</th>
+                </tr>
+                
+                <%times = [1,2,3,4,5,6]%>
+                <% for i in times.each %>
+                <% reservations =  @reservations[i-1].split(" ")%>
+                    <tr>
+                        <td><%= times[i - 1] %></td>
+                        <% unless reservations[0] == "Avalible" %>
+                            <td><%=" #{reservations[0]} for #{reservations[2]} #{reservations[3]} "%> </td>
+                        <% else %>
+                            <td><%=link_to reservations[0], schedule_path(:teacher_account => @whichteacher.id, :place => i-1) %></td>
+                        <% end %>
+                    </tr>
+                <% end %>
+                
+            </table>
+            <%= link_to "Back", student_page_path, class: "btn-primary btn-lg" %>
+        </div>
         
-        <%times = [1,2,3,4,5,6]%>
-        <% for i in times.each %>
-        <% reservations =  @reservations[i-1].split(" ")%>
+        <div class=" col-lg-4 col-md-4 col-sm-4 col-lg-4 col-xs-4 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1SS">
+        <h  style="font-size:20px">Your schedule</h>
+        <table class="table">
+            <thead>
             <tr>
-                <td><%= times[i - 1] %></td>
-                <td><%= link_to "#{reservations[0]} for #{reservations[2]} #{reservations[3]}", schedule_path(:teacher_account => @whichteacher.id, :place => i-1) %></td>
+                <th>#</th>
+                <th>Time</th>
+                <th>Teacher Name</th>
             </tr>
-        <% end %>
+            </thead>
+            <% numbers = [1,2,3,4] %>
+            <% numbers.each do |number| %>
+            <%
+                if @user.your_times[number-1] == "NA"
+                    string = ["NA","NA"]
+                else
+                    string = @user.your_times[number-1].split(" ") 
+                end %>
+                <thead>
+                <tr>
+                    <th><%= numbers[number-1] %></th>
+                    <th><%= string[0] %></th>
+                    <th><%= string[1] %></th>
+                    <% unless string[0] == "NA"%>
+                    <th><%= link_to "Delete", remove_selected_path(:string1 => string , :place => (numbers[number-1]-1)), class: "btn-danger btn-sm" %></th>
+                    <% else %>
+                    <th></th>
+                    <% end %>
+                </tr>
+                </thead>
+            <% end %>
+            
+        </table>
+        <%= link_to "Clear Schedual",reset_student_schedule_path, class: "btn-primary btn-lg" %>
+    </div>
         
-    </table>
-    <%= link_to "Back", student_page_path, class: "btn-primary btn-sm" %>
+    </div>
+    
 </div>

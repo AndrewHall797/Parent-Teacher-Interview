@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
 
-  root 'pages#home'
+  root 'sessions#new'
 
   resources :users
   resources :teachers
@@ -20,6 +20,10 @@ Rails.application.routes.draw do
   get 'prin_new' => 'prins#new'
   get 'prin_page' => 'users#prin' 
   get 'reset_student_schedule' => 'users#clear_schedule'
+  get 'remove_selected' => 'users#remove_selected'
+  get 'teacher_remove_selected' => 'teachers#teacher_remove_selected'
+  
+  post 'auto_create_schedule' =>'users#auto_create_schedule'
 
   
   

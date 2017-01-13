@@ -1,56 +1,95 @@
-<div class="col-md-4 col-md-offset-1">
-    <p style = "font-size: 20px ;">Teachers</p>
-<div class = "table-tb">
-<table class="table table-responsive">
-  <thead>
-  <tr>
-      <th>Name</th>
-      <th>Last</th>
-      <th>Delete</th>
-  </tr>
-  </thead>
- <% @teachers.each do |teacher| %>
-    <thead>
-            <tr> 
-                <td><%= link_to teacher.name, teacher%></td>
-                <td><%= teacher.last%> </td>
-                <td><%= link_to "delete", teacher, method: :delete, data: { confirm: "You sure?" }, class: "btn-primary btn-sm" %> </td>
-            </tr>
-    </thead>
-  <% end %>
- </table>
- </div>    
- <%= link_to "Create Teacher", teacher_new_path, class: "btn-primary btn-lg" %>
- </div>
- 
- <div class="col-md-4 col-md-offset-1">
-     <p style = "font-size: 20px;">Students</p>
-<div class = "table-tb">
- <table class="table table-responsive">
-  <thead>
-  <tr>
-      <th>Name</th>
-      <th>Last</th>
-      <th>Delete</th>
-  </tr>
-  </thead>
- <% @users.each do |user| %>
+<div class="container-fluid">
+    
+    <nav class="navbar navbar-default  navbar-fixed-top">
+        <div class="navbar-header">
+          <a class="navbar-brand">Earl Of March S.S</a>
+        </div>
+        <ul class="nav navbar-nav pull-right">
+          <li class="active col-md"><%= link_to "Log out", session_destroy_path%></li>
+        </ul>
+    </nav>
+    
+    <div class="row top-buffer">
+        <div class="col-md-12">
+            <h1>Principle/Administrative Page</h>
+        </div>
+    </div>
+    
+    <div class="row">     
+       <div class="row top-buffer">
+        <div class="col-md-4">
+            <p style = "font-size: 20px ;">Teachers</p>
+        <div class = "table-tb">
+        <table class="table table-responsive">
+          <thead>
+          <tr>
+              <th>Name</th>
+              <th>Last</th>
+              <th>Delete</th>
+          </tr>
+          </thead>
+         <% @teachers.each do |teacher| %>
             <thead>
-            <tr> 
-                <td><%= link_to user.name, user %></td>
-                <td><%= user.last_name%> </td>
-                <td><%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" }, class: "btn-primary btn-sm" %> </td>
-            </tr>
+                    <tr> 
+                        <td><%= link_to teacher.name, teacher%></td>
+                        <td><%= teacher.last%> </td>
+                        <td><%= link_to "delete", teacher, method: :delete, data: { confirm: "You sure?" }, class: "btn-primary btn-sm" %> </td>
+                    </tr>
             </thead>
-  <% end %>
-
- </table>
-</div>
-<%= link_to "Create Student", new_user_path, class: "btn-primary btn-lg" %>
-</div>
-  
- <div class="col-md-4 col-md-offset-8">
-   <%= link_to "Create Principle/Admin", prin_new_path, class: "btn-primary btn-lg" %>
-   <%= link_to "Home Page", root_url, class: "btn-primary btn-lg" %>
-  </div>
-</ul>
+          <% end %>
+         </table>
+         </div>    
+         <%= link_to "Create Teacher", teacher_new_path, class: "btn-primary btn-lg" %>
+         </div>
+         
+         <div class="col-md-4">
+             <p style = "font-size: 20px;">Students</p>
+        <div class = "table-tb">
+         <table class="table table-responsive">
+          <thead>
+          <tr>
+              <th>Name</th>
+              <th>Last</th>
+              <th>Delete</th>
+          </tr>
+          </thead>
+         <% @users.each do |user| %>
+                    <thead>
+                    <tr> 
+                        <td><%= link_to user.name, user %></td>
+                        <td><%= user.last_name%> </td>
+                        <td><%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" }, class: "btn-primary btn-sm" %> </td>
+                    </tr>
+                    </thead>
+          <% end %>
+        
+         </table>
+        </div>
+        <%= link_to "Create Student", new_user_path, class: "btn-primary btn-lg" %>
+        </div>
+          
+        <div class="col-md-4">
+             <p style = "font-size: 20px;">Principles</p>
+        <div class = "table-tb">
+         <table class="table table-responsive">
+          <thead>
+          <tr>
+              <th>Name</th>
+              <th>Last</th>
+          </tr>
+          </thead>
+         <% @prins.each do |prin| %>
+                    <thead>
+                    <tr> 
+                        <td><%= prin.name %></td>
+                        <td><%= prin.last_name%> </td>
+                    </thead>
+          <% end %>
+        
+         </table>
+        </div>
+        <%= link_to "Create Principle", prin_new_path, class: "btn-primary btn-lg" %>
+        </div>
+     </div>
+    </div> 
+</div>  

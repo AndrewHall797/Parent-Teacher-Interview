@@ -4,8 +4,11 @@ class PagesController < ApplicationController
     end
     
     def student_page
-        unless session[:role]== "Student"
+        if session[:role] == "Teacher"
         redirect_to "https://database-tjthekid.c9users.io/teacher_page"
+        return
+        elsif session[:role] =="Principle"
+        redirect_to "https://database-tjthekid.c9users.io/prin_page"
         return
         end
         
@@ -28,6 +31,11 @@ class PagesController < ApplicationController
 
     
     def scheduling
+        unless session[:role]== "Student"
+        redirect_to "https://database-tjthekid.c9users.io/teacher_page"
+        return
+        end
+        @user = User.find(session[:user_id])
         @whichteacher = Teacher.find(params[:teacher_account])
         @reservations = Teacher.find(params[:teacher_account]).reserved
     end
