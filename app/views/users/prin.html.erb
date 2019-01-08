@@ -33,7 +33,7 @@
                     <tr> 
                         <td><%= link_to teacher.name, teacher%></td>
                         <td><%= teacher.last%> </td>
-                        <td><%= link_to "delete", teacher, method: :delete, data: { confirm: "You sure?" }, class: "btn-primary btn-sm" %> </td>
+                        <td><%= link_to "delete", teacher, method: :delete, data: { confirm: "You sure?" }, class: "btn-danger btn-sm" %> </td>
                     </tr>
             </thead>
           <% end %>
@@ -58,7 +58,7 @@
                     <tr> 
                         <td><%= link_to user.name, user %></td>
                         <td><%= user.last_name%> </td>
-                        <td><%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" }, class: "btn-primary btn-sm" %> </td>
+                        <td><%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" }, class: "btn-danger btn-sm" %> </td>
                     </tr>
                     </thead>
           <% end %>

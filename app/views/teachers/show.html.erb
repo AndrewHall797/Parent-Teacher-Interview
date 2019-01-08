@@ -1,43 +1,64 @@
-
-<h1>Teacher Access <h1> 
-
-<%=form_for @teacher do|f| %>
-    <% if @teacher.errors.any? %>
-    <div class="error_messages">
-        
-        <h2>Form is Invalid</h2>
-        <ul>
-            <% @teacher.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-            <% end%>
-        </ul>
-    </div>
-<%end%>
-
- Name:<br />
- <%=@teacher.name%> <br />
- <br />
- 
- LastName:<br />
- <%=@teacher.last%> <br />
-      
-       <br />
-
- 
-       <div class "field">
-        <%= f.label "Upadte Password"%><br />
-        <%= f.text_field :password %><br />
+<div class="containter-fluid">
+    <div class="row">
+        <nav class="navbar navbar-default  navbar-fixed-top">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">Earl Of March S.S</a>
+            </div>
+            <ul class="nav navbar-nav pull-right">
+              <li class="active"><%= link_to "Log out", session_destroy_path%></a></li>
+            </ul>
+        </nav>
     </div>
     
-    
-    <div class "field">
-         <%= f.label "Upadte Password Confirmation"%><br />
-        <%= f.text_field :password_confirmation %><br />
+    <div class="row">
+        <div style="text-align: center" class="col-md-4 col-md-offset-4">
+            <h style="font-size:50px; text-decoration: underline">Edit User Account</h>
+        </div>
     </div>
     
+    <div class="row">
+        <div style="text-align: center" class="col-md-4 col-md-offset-4 top-buffer">
+            <h style="font-size:30px;">Teacher User: <%= @teacher.name %> <%= @teacher.last%> <h>
+        </div>
+    </div>
     
-    <div class "actions"></div>
-        <%= f.submit %>
-     </div>
-    
-<% end %>
+    <div class="row">
+        <div style="text-align: center" class="col-md-4 col-md-offset-4">
+            <%=form_for @teacher do|f| %>
+                <% if @teacher.errors.any? %>
+                    <div class="error_messages">
+                            
+                        <h2>Form is Invalid</h2>
+                        <ul>
+                            <% @teacher.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                            <% end%>
+                        </ul>
+                    </div>
+                <%end%>
+                
+                
+                <div class="feild">
+                    <p><%= f.label "Update Password"%></p>
+                    <p><%= f.password_field :password,class: "form-control" %></p>
+                </div>
+                    
+                    
+                <div class="feild">
+                    <p><%= f.label "Update Password Confirmation"%></p>
+                    <p><%= f.password_field :password_confirmation,class: "form-control" %></p>
+                </div>
+                    
+                    
+                <div class="actions">
+                    <%= f.submit:Submit, class: 'btn-lg btn-primary' %>
+                </div>
+                
+                    
+            <% end %>
+            <div class="top-buffer">
+                <%= link_to "Back", prin_page_path, class: 'btn-lg btn-primary' %>
+            </div>
+        </div>
+    </div>
+</div>

@@ -11,7 +11,7 @@
     
     <div class="row">
         <div class="col-md-4 col-lg-8 col-sm-4 col-xs-4 col-md-offset-1 col-sm-offset1 col-lg-offset-1 col-xs-offset-1">
-            <h1>Welcome to the scheduling page of <%=@whichteacher.name%></h1>
+            <h1> Schedule of <%=@whichteacher.name%> <%= @whichteacher.last %></h1>
         </div>
     </div>
     
@@ -22,16 +22,16 @@
                     <th>Time</th>
                     <th>Avalibility</th>
                 </tr>
-                
-                <%times = [1,2,3,4,5,6]%>
-                <% for i in times.each %>
-                <% reservations =  @reservations[i-1].split(" ")%>
+                <%times_array = ["4:00","4:10","4:20","4:30","4:40","4:50","5:00","5:10","5:20","5:30","5:40","5:50"]%>
+                <%times = 0..11 %>
+                <% for i in times %>
+                <% reservations =  @reservations[i].split(",")%>
                     <tr>
-                        <td><%= times[i - 1] %></td>
+                        <td><%= times_array[i] %></td>
                         <% unless reservations[0] == "Avalible" %>
                             <td><%=" #{reservations[0]} for #{reservations[2]} #{reservations[3]} "%> </td>
                         <% else %>
-                            <td><%=link_to reservations[0], schedule_path(:teacher_account => @whichteacher.id, :place => i-1) %></td>
+                            <td><%=link_to reservations[0], schedule_path(:teacher_account => @whichteacher.id, :place => i) %></td>
                         <% end %>
                     </tr>
                 <% end %>
@@ -50,23 +50,28 @@
                 <th>Teacher Name</th>
             </tr>
             </thead>
+            <% times_array = ["4:00","4:10","4:20","4:30","4:40","4:50","5:00","5:10","5:20","5:30","5:40","5:50"]%>
             <% numbers = [1,2,3,4] %>
             <% numbers.each do |number| %>
             <%
                 if @user.your_times[number-1] == "NA"
                     string = ["NA","NA"]
                 else
-                    string = @user.your_times[number-1].split(" ") 
+                    string = @user.your_times[number-1].split(",") 
                 end %>
                 <thead>
                 <tr>
-                    <th><%= numbers[number-1] %></th>
-                    <th><%= string[0] %></th>
-                    <th><%= string[1] %></th>
+                    <td><%= numbers[number-1] %></td>
                     <% unless string[0] == "NA"%>
-                    <th><%= link_to "Delete", remove_selected_path(:string1 => string , :place => (numbers[number-1]-1)), class: "btn-danger btn-sm" %></th>
+                    <td><%= times_array[string[0].to_i]  %></td>
                     <% else %>
-                    <th></th>
+                    <td><%= string[0] %></td>
+                    <% end %>
+                    <td><%= string[1] %></td>
+                    <% unless string[0] == "NA"%>
+                    <td><%= link_to "Delete", remove_selected_path(:string1 => string , :place => (numbers[number-1]-1)), class: "btn-danger btn-sm" %></td>
+                    <% else %>
+                    <td></td>
                     <% end %>
                 </tr>
                 </thead>

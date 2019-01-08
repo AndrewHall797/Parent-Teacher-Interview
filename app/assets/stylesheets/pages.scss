@@ -1,11 +1,13 @@
 
-html, body {
+//SCSS File to set Text-Container environmnet, as well as baground image
+
+html, body {//Set Body Contaier size to scale
   height: 90%;
   margin: 0;
 }
 
-body {
-  background-image: url('http://hdwallpaperbackgrounds.net/wp-content/uploads/2016/07/white-background-5.jpg');
+body {//Set attributes of the body container
+  background-image: url('http://www.shunvmall.com/data/out/34/47161230-blur-images.png');//Set background to link
   background-repeat: no-repeat;
   background-size: 100% 115%;
   font-family: 'Franklin Gothic', sans-serif;
@@ -13,13 +15,13 @@ body {
 
 
 
-
+//Autosize and scaling of container
 @media screen and (max-width: 800px) {
     body {
-        background-size: auto 100%;
+        background-size: auto 100%;//Auto Scaling
     }
     .container {
-        width: 100%;
+        width: 100%;//Container take up 100% of width available
     }
     
     

@@ -1,6 +1,6 @@
 
-<div class=".containter-fluid">
-    
+<div class="containter-fluid">
+    <% times_array = ["4:00","4:10","4:20","4:30","4:40","4:50","5:00","5:10","5:20","5:30","5:40","5:50"]%>
 <nav class="navbar navbar-default  navbar-fixed-top">
         <div class="navbar-header">
           <a class="navbar-brand" href="#">Earl Of March S.S</a>
@@ -12,7 +12,7 @@
     
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12" style= "text-align: center; font-weight:bold">
-            <h1 style="font-size:40px">Welcome to the Earl of March Interview Scheduler <%=@username%> <%= @userlast%> <h1> 
+            <h1 style="font-size:40px">Welcome <%=@username%> <%= @userlast%> <h1> 
         </div>
     </div>
     
@@ -43,9 +43,9 @@
           Enter a general time
           </p>
           
-          <% times = 0..5 %>
+          <% times = 0..11 %>
           <% label_tag "user_time" %>
-          <%= select_tag "user_time", options_for_select( times.collect{|x| [x,x]}), :prompt => "Select a general time", class: "form-control" %>
+          <%= select_tag "user_time", options_for_select( times.collect{|x| [times_array[x],x]}), :prompt => "Select a general time", class: "form-control" %>
           </p>
           
           </p>
@@ -53,6 +53,11 @@
           
         </div>
         <% end %>
+        <div>
+            <% if flash[:notice] %>
+                <div class="notice" style="font-size:20px;"><%= flash[:notice] %></div>
+            <% end %>
+        </div>
     </div>
 
     <div class=" col-lg-4 col-md-4 col-sm-3 col-xs-2 col-lg-4">
@@ -90,18 +95,23 @@
                 <th></th>
             </tr>
             </thead>
+            <% times_array = ["4:00","4:10","4:20","4:30","4:40","4:50","5:00","5:10","5:20","5:30","5:40","5:50"]%>
             <% numbers = [1,2,3,4] %>
             <% numbers.each do |number| %>
             <%
                 if @user.your_times[number-1] == "NA"
                     string = ["NA","NA"]
                 else
-                    string = @user.your_times[number-1].split(" ") 
+                    string = @user.your_times[number-1].split(",") 
                 end %>
                 <thead>
                 <tr>
                     <td><%= numbers[number-1] %></td>
+                    <% unless string[0] == "NA"%>
+                    <td><%= times_array[string[0].to_i]  %></td>
+                    <% else %>
                     <td><%= string[0] %></td>
+                    <% end %>
                     <td><%= string[1] %></td>
                     <% unless string[0] == "NA"%>
                     <td><%= link_to "Delete", remove_selected_path(:string1 => string , :place => (numbers[number-1]-1)), class: "btn-danger btn-sm" %></td>

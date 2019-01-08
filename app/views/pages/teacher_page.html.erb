@@ -12,7 +12,7 @@
     
     <div class="row">
         <div class="col-md-8 col-md-offset-1 col-lg-8 col-lg-offset-1 col-sm-8 col-sm-offset-1 col-xs-8 col-xs-offset-1">
-            <h1>Welcome to the Earl of March Database <%=@teachername%> <%= @teacherlast%> <h1> 
+            <h1>Welcome to the Earl of March Database <%=@teachername%> <%=@teacherlast%> <h1> 
         </div>
     </div>
     
@@ -24,19 +24,19 @@
                 <th>Schedualed</th>
                 <th></th>
             </tr>
-           
-            <%times = [1,2,3,4,5,6]%>
-            <% for i in times.each %>
+            <% times_array = ["4:00","4:10","4:20","4:30","4:40","4:50","5:00","5:10","5:20","5:30","5:40","5:50"]%>
+            <%times = 0..11 %>
+            <% for i in times %>
                 <tr>
-                    <td><%= times[i-1] %></td>
-                    <% unless @reservations[i-1] == "Avalible" %>
-                    <% users_times = @reservations[i-1].split(" ")%>
+                    <td><%= times_array[i] %></td>
+                    <% unless @reservations[i] == "Avalible" %>
+                    <% users_times = @reservations[i].split(",")%>
                     <td><%= "#{users_times[2]} #{users_times[3]}"%></td>
                     <% else %>
-                    <td><%= @reservations[i-1] %></td>
+                    <td><%= @reservations[i] %></td>
                     <% end %>
-                    <% unless @reservations[i-1] == "Avalible" %>
-                    <td> <%= link_to "Delete", teacher_remove_selected_path(:string1 => @reservations[i-1] , :place => i-1), class: "btn-primary btn-sm" %> </td>
+                    <% unless @reservations[i] == "Avalible" %>
+                    <td> <%= link_to "Delete", teacher_remove_selected_path(:string1 => @reservations[i] , :place => i), class: "btn-primary btn-sm" %> </td>
                     <% else %>
                     <td></td>
                     <% end %>

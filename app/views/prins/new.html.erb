@@ -16,34 +16,34 @@
     
     <div class "field">
         <%= f.label "User"%><br />
-        <%= f.text_field :email,class: "form-control"  %><br />
+        <%= f.text_field :email,class: "form-control", :required => true  %><br />
     </div>
     
     <div class "field">
         <%= f.label :password %><br />
-        <%= f.password_field :password,class: "form-control"  %><br />
+        <%= f.password_field :password,class: "form-control", :required => true  %><br />
     </div>
     
     <div class "field">
         <%= f.label :password_confirmation %><br />
-        <%= f.text_field :password_confirmation,class: "form-control"  %><br />
+        <%= f.text_field :password_confirmation,class: "form-control", :required => true  %><br />
     </div>
     
      <div class "field">
         <%= f.label :name %><br />
-        <%= f.text_field :name,class: "form-control"  %><br />
+        <%= f.text_field :name,class: "form-control", :required => true  %><br />
     </div>
     
      <div class "field">
         <%= f.label :last_name %><br />
-        <%= f.text_field :last_name,class: "form-control" %><br />
+        <%= f.text_field :last_name,class: "form-control", :required => true %><br />
     </div>   
     
     <div class "actions">
         <%= f.submit :Submit, class: 'btn btn-primary' %>
      </div>
         
-    <%= link_to "Back", prin_user_path, class: 'btn btn-primary btn-lg' %>    
+    <%= link_to "Back", prin_user_path, class: 'btn btn-primary btn-lg top-buffer' %>    
         
 <% end %>
 </div>
